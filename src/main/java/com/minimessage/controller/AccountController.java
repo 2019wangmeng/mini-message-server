@@ -50,8 +50,23 @@ public class AccountController extends ABaseController {
         try {
             if (!checkCode.equalsIgnoreCase((String) redisUtils.get(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey)))
                 throw new BusinessException("图片验证码不正确");
-            userInfoService.register(email,nickName,password);
+            userInfoService.register(email, nickName, password);
             return getSuccessResponseVO(null);
+        } finally {
+            redisUtils.delete(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
+        }
+    }
+
+    @RequestMapping("/login")
+    public ResponseVO login(@NotEmpty String checkCodeKey,
+                            @NotEmpty @Email String email,
+                            @NotEmpty String password,
+                            @NotEmpty String checkCode) {
+
+        try {
+            if (!checkCode.equalsIgnoreCase((String) redisUtils.get(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey)))
+                throw new BusinessException("图片验证码不正确");
+            return getSuccessResponseVO(userInfoService.login(email, password));
         } finally {
             redisUtils.delete(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
         }
