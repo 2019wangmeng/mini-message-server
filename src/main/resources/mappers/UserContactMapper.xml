@@ -114,7 +114,7 @@
     </select>
 
     <!-- 插入 （匹配有值的字段）-->
-    <insert id="insert" parameterType="com.easychat.entity.po.UserContact">
+    <insert id="insert" parameterType="com.minimessage.entity.po.UserContact">
         INSERT INTO user_contact
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.userId != null">
@@ -159,7 +159,7 @@
     </insert>
 
     <!-- 插入或者更新 （匹配有值的字段）-->
-    <insert id="insertOrUpdate" parameterType="com.easychat.entity.po.UserContact">
+    <insert id="insertOrUpdate" parameterType="com.minimessage.entity.po.UserContact">
         INSERT INTO user_contact
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.userId != null">
@@ -213,7 +213,7 @@
     </insert>
 
     <!-- 添加 （批量插入）-->
-    <insert id="insertBatch" parameterType="com.easychat.entity.po.UserContact">
+    <insert id="insertBatch" parameterType="com.minimessage.entity.po.UserContact">
         INSERT INTO user_contact(
         user_id,
         contact_id,
@@ -235,7 +235,7 @@
     </insert>
 
     <!-- 批量新增修改 （批量插入）-->
-    <insert id="insertOrUpdateBatch" parameterType="com.easychat.entity.po.UserContact">
+    <insert id="insertOrUpdateBatch" parameterType="com.minimessage.entity.po.UserContact">
         INSERT INTO user_contact(
         user_id,
         contact_id,
@@ -260,7 +260,7 @@
     </insert>
 
     <!--多条件修改-->
-    <update id="updateByParam" parameterType="com.easychat.entity.query.UserContactQuery">
+    <update id="updateByParam" parameterType="com.minimessage.entity.query.UserContactQuery">
         UPDATE user_contact
         <set>
             <if test="bean.userId != null">
@@ -292,7 +292,7 @@
     </delete>
 
     <!-- 根据UserIdAndContactId修改-->
-    <update id="updateByUserIdAndContactId" parameterType="com.easychat.entity.po.UserContact">
+    <update id="updateByUserIdAndContactId" parameterType="com.minimessage.entity.po.UserContact">
         UPDATE user_contact
         <set>
             <if test="bean.contactType != null">

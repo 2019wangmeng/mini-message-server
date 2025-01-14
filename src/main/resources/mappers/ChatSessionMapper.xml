@@ -71,7 +71,7 @@
     </select>
 
     <!-- 插入 （匹配有值的字段）-->
-    <insert id="insert" parameterType="com.easychat.entity.po.ChatSession">
+    <insert id="insert" parameterType="com.minimessage.entity.po.ChatSession">
         INSERT INTO chat_session
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.sessionId != null">
@@ -98,7 +98,7 @@
     </insert>
 
     <!-- 插入或者更新 （匹配有值的字段）-->
-    <insert id="insertOrUpdate" parameterType="com.easychat.entity.po.ChatSession">
+    <insert id="insertOrUpdate" parameterType="com.minimessage.entity.po.ChatSession">
         INSERT INTO chat_session
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.sessionId != null">
@@ -137,7 +137,7 @@
     </insert>
 
     <!-- 添加 （批量插入）-->
-    <insert id="insertBatch" parameterType="com.easychat.entity.po.ChatSession">
+    <insert id="insertBatch" parameterType="com.minimessage.entity.po.ChatSession">
         INSERT INTO chat_session(
         session_id,
         last_message,
@@ -153,7 +153,7 @@
     </insert>
 
     <!-- 批量新增修改 （批量插入）-->
-    <insert id="insertOrUpdateBatch" parameterType="com.easychat.entity.po.ChatSession">
+    <insert id="insertOrUpdateBatch" parameterType="com.minimessage.entity.po.ChatSession">
         INSERT INTO chat_session(
         session_id,
         last_message,
@@ -173,7 +173,7 @@
     </insert>
 
     <!--多条件修改-->
-    <update id="updateByParam" parameterType="com.easychat.entity.query.ChatSessionQuery">
+    <update id="updateByParam" parameterType="com.minimessage.entity.query.ChatSessionQuery">
         UPDATE chat_session
         <set>
             <if test="bean.sessionId != null">
@@ -196,7 +196,7 @@
     </delete>
 
     <!-- 根据SessionId修改-->
-    <update id="updateBySessionId" parameterType="com.easychat.entity.po.ChatSession">
+    <update id="updateBySessionId" parameterType="com.minimessage.entity.po.ChatSession">
         UPDATE chat_session
         <set>
             <if test="bean.lastMessage != null">

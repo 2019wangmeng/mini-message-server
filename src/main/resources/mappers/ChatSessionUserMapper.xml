@@ -86,7 +86,7 @@
     </select>
 
     <!-- 插入 （匹配有值的字段）-->
-    <insert id="insert" parameterType="com.easychat.entity.po.ChatSessionUser">
+    <insert id="insert" parameterType="com.minimessage.entity.po.ChatSessionUser">
         INSERT INTO chat_session_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.userId != null">
@@ -119,7 +119,7 @@
     </insert>
 
     <!-- 插入或者更新 （匹配有值的字段）-->
-    <insert id="insertOrUpdate" parameterType="com.easychat.entity.po.ChatSessionUser">
+    <insert id="insertOrUpdate" parameterType="com.minimessage.entity.po.ChatSessionUser">
         INSERT INTO chat_session_user
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.userId != null">
@@ -167,7 +167,7 @@
     </insert>
 
     <!-- 添加 （批量插入）-->
-    <insert id="insertBatch" parameterType="com.easychat.entity.po.ChatSessionUser">
+    <insert id="insertBatch" parameterType="com.minimessage.entity.po.ChatSessionUser">
         INSERT INTO chat_session_user(
         user_id,
         contact_id,
@@ -185,7 +185,7 @@
     </insert>
 
     <!-- 批量新增修改 （批量插入）-->
-    <insert id="insertOrUpdateBatch" parameterType="com.easychat.entity.po.ChatSessionUser">
+    <insert id="insertOrUpdateBatch" parameterType="com.minimessage.entity.po.ChatSessionUser">
         INSERT INTO chat_session_user(
         user_id,
         contact_id,
@@ -208,7 +208,7 @@
     </insert>
 
     <!--多条件修改-->
-    <update id="updateByParam" parameterType="com.easychat.entity.query.ChatSessionUserQuery">
+    <update id="updateByParam" parameterType="com.minimessage.entity.query.ChatSessionUserQuery">
         UPDATE chat_session_user
         <set>
             <if test="bean.userId != null">
@@ -234,7 +234,7 @@
     </delete>
 
     <!-- 根据UserIdAndContactId修改-->
-    <update id="updateByUserIdAndContactId" parameterType="com.easychat.entity.po.ChatSessionUser">
+    <update id="updateByUserIdAndContactId" parameterType="com.minimessage.entity.po.ChatSessionUser">
         UPDATE chat_session_user
         <set>
             <if test="bean.sessionId != null">

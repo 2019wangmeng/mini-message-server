@@ -1,10 +1,12 @@
 package com.minimessage.mappers;
 
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 /**
  * app发布 数据库操作接口
  */
+@Mapper
 public interface AppUpdateMapper<T, P> extends BaseMapper<T, P> {
 
     /**

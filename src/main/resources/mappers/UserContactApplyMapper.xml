@@ -120,7 +120,7 @@
     </select>
 
     <!-- 插入 （匹配有值的字段）-->
-    <insert id="insert" parameterType="com.easychat.entity.po.UserContactApply">
+    <insert id="insert" parameterType="com.minimessage.entity.po.UserContactApply">
         <selectKey keyProperty="bean.applyId" resultType="Integer" order="AFTER">
             SELECT LAST_INSERT_ID()
         </selectKey>
@@ -174,7 +174,7 @@
     </insert>
 
     <!-- 插入或者更新 （匹配有值的字段）-->
-    <insert id="insertOrUpdate" parameterType="com.easychat.entity.po.UserContactApply">
+    <insert id="insertOrUpdate" parameterType="com.minimessage.entity.po.UserContactApply">
         INSERT INTO user_contact_apply
         <trim prefix="(" suffix=")" suffixOverrides=",">
             <if test="bean.applyId != null">
@@ -255,7 +255,7 @@
     </insert>
 
     <!-- 添加 （批量插入）-->
-    <insert id="insertBatch" parameterType="com.easychat.entity.po.UserContactApply" useGeneratedKeys="true"
+    <insert id="insertBatch" parameterType="com.minimessage.entity.po.UserContactApply" useGeneratedKeys="true"
             keyProperty="applyId">
         INSERT INTO user_contact_apply(
         apply_user_id,
@@ -280,7 +280,7 @@
     </insert>
 
     <!-- 批量新增修改 （批量插入）-->
-    <insert id="insertOrUpdateBatch" parameterType="com.easychat.entity.po.UserContactApply">
+    <insert id="insertOrUpdateBatch" parameterType="com.minimessage.entity.po.UserContactApply">
         INSERT INTO user_contact_apply(
         apply_user_id,
         receive_user_id,
@@ -312,7 +312,7 @@
     </insert>
 
     <!--多条件修改-->
-    <update id="updateByParam" parameterType="com.easychat.entity.query.UserContactApplyQuery">
+    <update id="updateByParam" parameterType="com.minimessage.entity.query.UserContactApplyQuery">
         UPDATE user_contact_apply
         <set>
             <if test="bean.applyUserId != null">
@@ -347,7 +347,7 @@
     </delete>
 
     <!-- 根据ApplyId修改-->
-    <update id="updateByApplyId" parameterType="com.easychat.entity.po.UserContactApply">
+    <update id="updateByApplyId" parameterType="com.minimessage.entity.po.UserContactApply">
         UPDATE user_contact_apply
         <set>
             <if test="bean.applyUserId != null">
@@ -391,7 +391,7 @@
 
     <!-- 根据ApplyUserIdAndReceiveUserIdAndContactId修改-->
     <update id="updateByApplyUserIdAndReceiveUserIdAndContactId"
-            parameterType="com.easychat.entity.po.UserContactApply">
+            parameterType="com.minimessage.entity.po.UserContactApply">
         UPDATE user_contact_apply
         <set>
             <if test="bean.contactType != null">

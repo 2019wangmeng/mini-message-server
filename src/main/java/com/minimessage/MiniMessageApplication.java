@@ -1,9 +1,13 @@
 package com.minimessage;
 
+import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-@SpringBootApplication
+@SpringBootApplication(scanBasePackages = {"com.minimessage"})
+@EnableTransactionManagement
+@MapperScan(basePackages = {"mappers"})
 public class MiniMessageApplication {
     public static void main(String[] args) {
         SpringApplication.run(MiniMessageApplication.class,args);

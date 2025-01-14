@@ -72,7 +72,7 @@
 	</select>
 
 	<!-- 插入 （匹配有值的字段）-->
-	<insert id="insert" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<insert id="insert" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 INSERT INTO user_info_beauty
 		 <trim prefix="(" suffix=")" suffixOverrides="," >
 			<if test="bean.id != null">
@@ -105,7 +105,7 @@
 	</insert>
 
 	<!-- 插入或者更新 （匹配有值的字段）-->
-	<insert id="insertOrUpdate" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<insert id="insertOrUpdate" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 INSERT INTO user_info_beauty
 		 <trim prefix="(" suffix=")" suffixOverrides=",">
 			<if test="bean.id != null">
@@ -153,7 +153,7 @@
 	</insert>
 
 	<!-- 添加 （批量插入）-->
-	<insert id="insertBatch" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<insert id="insertBatch" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 INSERT INTO user_info_beauty(
 			 id,
 			 email,
@@ -171,7 +171,7 @@
 	</insert>
 
 	<!-- 批量新增修改 （批量插入）-->
-	<insert id="insertOrUpdateBatch" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<insert id="insertOrUpdateBatch" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 INSERT INTO user_info_beauty(
 			 id,
 			 email,
@@ -194,7 +194,7 @@
 	</insert>
 
 	<!--多条件修改-->
-	<update id="updateByParam" parameterType="com.easychat.entity.query.UserInfoBeautyQuery">
+	<update id="updateByParam" parameterType="com.minimessage.entity.query.UserInfoBeautyQuery">
 		 UPDATE user_info_beauty
  		 <set> 
 			<if test="bean.id != null">
@@ -220,7 +220,7 @@
 	</delete>
 
 	<!-- 根据Id修改-->
-	<update id="updateById" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<update id="updateById" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 UPDATE user_info_beauty
  		 <set> 
 			<if test="bean.email != null">
@@ -247,7 +247,7 @@
 	</select>
 
 	<!-- 根据UserId修改-->
-	<update id="updateByUserId" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<update id="updateByUserId" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 UPDATE user_info_beauty
  		 <set> 
 			<if test="bean.id != null">
@@ -274,7 +274,7 @@
 	</select>
 
 	<!-- 根据Email修改-->
-	<update id="updateByEmail" parameterType="com.easychat.entity.po.UserInfoBeauty">
+	<update id="updateByEmail" parameterType="com.minimessage.entity.po.UserInfoBeauty">
 		 UPDATE user_info_beauty
  		 <set> 
 			<if test="bean.id != null">

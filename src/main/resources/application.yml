@@ -45,6 +45,8 @@ spring:
         min-idle: 0
     timeout: 2000
 project:
-  folder: c:/easychat
+  folder: c:/minimessage
 admin:
   emails: test@qq.com
+mybatis:
+  mapper-locations: classpath:mappers/*.xml

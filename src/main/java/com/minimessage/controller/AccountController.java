@@ -2,6 +2,7 @@ package com.minimessage.controller;
 
 import com.minimessage.entity.constants.Constants;
 import com.minimessage.entity.vo.ResponseVO;
+import com.minimessage.exception.BusinessException;
 import com.minimessage.redis.RedisUtils;
 import com.minimessage.service.UserInfoService;
 import com.wf.captcha.ArithmeticCaptcha;
@@ -48,7 +49,7 @@ public class AccountController extends ABaseController {
                                @NotEmpty String checkCode) {
         try {
             if (!checkCode.equalsIgnoreCase((String) redisUtils.get(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey)))
-                throw new RuntimeException("图片验证码不正确");
+                throw new BusinessException("图片验证码不正确");
             userInfoService.register(email,nickName,password);
             return getSuccessResponseVO(null);
         } finally {
