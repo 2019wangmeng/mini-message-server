@@ -1,16 +1,22 @@
 package com.minimessage.controller;
 
+import com.minimessage.annotation.GlobalInterceptor;
 import com.minimessage.entity.constants.Constants;
+import com.minimessage.entity.dto.SysSettingDto;
 import com.minimessage.entity.vo.ResponseVO;
+import com.minimessage.entity.vo.SysSettingVO;
 import com.minimessage.exception.BusinessException;
+import com.minimessage.redis.RedisComponent;
 import com.minimessage.redis.RedisUtils;
 import com.minimessage.service.UserInfoService;
+import com.minimessage.utils.CopyTools;
 import com.wf.captcha.ArithmeticCaptcha;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import javax.annotation.Resource;
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotEmpty;
 import java.util.HashMap;
@@ -27,6 +33,8 @@ public class AccountController extends ABaseController {
 
     @Autowired
     private UserInfoService userInfoService;
+    @Resource
+    private RedisComponent redisComponent;
 
     @RequestMapping("/checkCode")
     public ResponseVO checkCode() {
@@ -70,5 +78,12 @@ public class AccountController extends ABaseController {
         } finally {
             redisUtils.delete(Constants.REDIS_KEY_CHECK_CODE + checkCodeKey);
         }
+    }
+
+    @RequestMapping(value = "/getSysSetting")
+    @GlobalInterceptor
+    public ResponseVO getSysSetting() {
+        SysSettingDto sysSettingDto = redisComponent.getSysSetting();
+        return getSuccessResponseVO(CopyTools.copy(sysSettingDto, SysSettingVO.class));
     }
 }

@@ -8,6 +8,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.util.CollectionUtils;
 
 import java.util.Collection;
+import java.util.List;
 import java.util.concurrent.TimeUnit;
 
 @Component
@@ -51,6 +52,30 @@ public class RedisUtils<V> {
             } else {
                 redisTemplate.delete((Collection<String>) CollectionUtils.arrayToList(key));
             }
+        }
+    }
+    public boolean expire(String key, long time) {
+        try {
+            if (time > 0) {
+                redisTemplate.expire(key, time, TimeUnit.SECONDS);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public boolean lpushAll(String key, List<V> values, long time){
+        try {
+            redisTemplate.opsForList().leftPushAll(key,values);
+            if (time > 0){
+                expire(key,time);
+            }
+            return true;
+        }catch (Exception e){
+            e.printStackTrace();
+            return false;
         }
     }
 }
