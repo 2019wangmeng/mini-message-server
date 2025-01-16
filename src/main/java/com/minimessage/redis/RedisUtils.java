@@ -41,7 +41,7 @@ public class RedisUtils<V> {
         }
     }
 
-    public V get(String key){
+    public V get(String key) {
         return key == null ? null : redisTemplate.opsForValue().get(key);
     }
 
@@ -54,6 +54,7 @@ public class RedisUtils<V> {
             }
         }
     }
+
     public boolean expire(String key, long time) {
         try {
             if (time > 0) {
@@ -66,16 +67,33 @@ public class RedisUtils<V> {
         }
     }
 
-    public boolean lpushAll(String key, List<V> values, long time){
+    public boolean lpushAll(String key, List<V> values, long time) {
         try {
-            redisTemplate.opsForList().leftPushAll(key,values);
-            if (time > 0){
-                expire(key,time);
+            redisTemplate.opsForList().leftPushAll(key, values);
+            if (time > 0) {
+                expire(key, time);
             }
             return true;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return false;
         }
+    }
+
+    public boolean lpush(String key, V value, long time) {
+        try {
+            redisTemplate.opsForList().leftPush(key, value);
+            if (time > 0) {
+                expire(key, time);
+            }
+            return true;
+        } catch (Exception e) {
+            e.printStackTrace();
+            return false;
+        }
+    }
+
+    public List<V> getQueueList(String key) {
+        return redisTemplate.opsForList().range(key, 0, -1);
     }
 }

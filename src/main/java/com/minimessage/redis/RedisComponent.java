@@ -35,4 +35,11 @@ public class RedisComponent {
         redisUtils.setx(Constants.REDIS_KEY_WS_TOKEN + tokenUserInfoDto.getToken(),tokenUserInfoDto,Constants.REDIS_KEY_EXPIRES_DAY * 2);
         redisUtils.setx(Constants.REDIS_KEY_WS_TOKEN_USERID + tokenUserInfoDto.getUserId(), tokenUserInfoDto.getToken(),Constants.REDIS_KEY_EXPIRES_DAY * 2);
     }
+
+    public void addUserContact(String userId, String contactId) {
+        List<String> contactIds = redisUtils.getQueueList(Constants.REDIS_KEY_USER_CONTACT + userId);
+        if (!contactIds.contains(contactId)){
+            redisUtils.lpush(Constants.REDIS_KEY_USER_CONTACT + userId,contactId,Constants.REDIS_KEY_TOKEN_EXPIRES);
+        }
+    }
 }
